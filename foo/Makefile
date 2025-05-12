@@ -1,4 +1,4 @@
-.PHONY: seed run test docs serve_docs clean all debug safe-all sample-query view-query
+.PHONY: seed run test docs serve_docs clean all debug safe-all sample-query view-query setup-athena
 
 BUCKET = foo-athena-query-result
 
@@ -62,8 +62,19 @@ view-query:
 	@echo "\nFetching query results..."
 	aws athena get-query-results --query-execution-id $(QUERY_ID) --region eu-west-2
 
+# Configure Athena workgroup with a default query results location
+setup-athena: create-bucket
+	@echo "Setting up Athena with default query results location..."
+	aws athena update-work-group \
+		--work-group primary \
+		--description "Primary workgroup with configured output location" \
+		--configuration "ResultConfigurationUpdates={OutputLocation=s3://$(BUCKET)/query-results/}" \
+		--region eu-west-2
+	@echo "Athena workgroup 'primary' has been configured with output location: s3://$(BUCKET)/query-results/"
+	@echo "You can now run queries in the Athena console without specifying an output location."
+
 create-bucket:
-	aws s3 mb s3://$(BUCKET)
+	-aws s3 mb s3://$(BUCKET)
 
 list:
 	aws s3 ls --recursive s3://$(BUCKET)

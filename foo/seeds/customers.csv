@@ -4,3 +4,7 @@ customer_id,first_name,last_name,email,age,city,country,created_at
 3,Robert,Johnson,robert.j@example.com,45,Edinburgh,UK,2023-01-30
 4,Emily,Brown,emily.b@example.com,31,Cardiff,UK,2023-03-10
 5,Michael,Davis,michael.d@example.com,38,Belfast,UK,2023-02-05
+6,Sarah,Wilson,sarah.w@example.com,42,Glasgow,UK,2025-05-01
+7,James,Taylor,james.t@example.com,27,Liverpool,UK,2025-04-28
+8,Laura,Anderson,laura.a@example.com,33,Birmingham,UK,2025-05-05
+9,David,Thomas,david.t@example.com,39,Bristol,UK,2025-05-10
