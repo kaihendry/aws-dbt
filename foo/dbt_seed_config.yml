@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  foo:
+    customers:
+      +column_types:
+        customer_id: int
+        age: int
+        created_at: date
+      +schema: dbt # Schema in Athena where the seed will be created
