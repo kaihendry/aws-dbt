@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: foo
+    database: awsdatacatalog
+    schema: dbt
+    tables:
+      - name: customer_view
+        description: "Customer data from foo project"
